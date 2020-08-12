@@ -1,0 +1,33 @@
+
+<h2><%= @restaurant.name %></h2>
+
+<p>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+<% if @restaurant.reviews.empty? %>
+  <p><i>No reviews for this restaurant</i></p>
+<% else %>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li>
+        <%= review.content %>
+        <%= review.rating %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to 'Back', restaurants_path %> |
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
